@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Program Cinta</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Program Cinta</h1>
+    <form method="POST">
+        <p>Apakah Anda suka dia? (ya/tidak):</p>
+        <input type="text" name="pilihan" required>
+        <br><br>
+        <div id="pilihan2_div" style="display: none;">
+            <p>Apakah dia juga suka Anda? (ya/tidak):</p>
+            <input type="text" name="pilihan2">
+        </div>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <div>
+        {% if result %}
+            <h2>{{ result }}</h2>
+        {% endif %}
+    </div>
+    <script>
+        document.querySelector("input[name='pilihan']").addEventListener("input", function() {
+            if (this.value === "ya") {
+                document.querySelector("#pilihan2_div").style.display = "block";
+            } else {
+                document.querySelector("#pilihan2_div").style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
